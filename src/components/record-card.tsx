@@ -52,7 +52,7 @@ const RecordCard = forwardRef<HTMLDivElement, RecordCardProps>(
                             display: "inline-block",
                         }}
                     >
-                        WITHHOLD RECORD
+                        OMISSION RECORD
                     </p>
                     <p
                         style={{

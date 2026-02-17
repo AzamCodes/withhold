@@ -2,7 +2,7 @@ import { toPng } from "html-to-image";
 
 export async function downloadCardAsPng(
     node: HTMLElement,
-    filename = "withhold-record.png"
+    filename = "OMISSION-record.png"
 ): Promise<void> {
     // Wait for fonts to be ready
     await document.fonts.ready;
