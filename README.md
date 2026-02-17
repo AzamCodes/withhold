@@ -1,4 +1,4 @@
-# WITHHOLD
+# OMISSION
 
 ### Record what you didn't give into.
 
@@ -8,7 +8,7 @@ A minimalist, no-database web application for logging acts of restraint.
 
 ## Philosophy
 
-WITHHOLD is built on the principle that what we **don't** do is often as defining as what we do. It provides a simple, distraction-free space to document moments of resistance against impulses, distractions, or habits.
+OMISSION is built on the principle that what we **don't** do is often as defining as what we do. It provides a simple, distraction-free space to document moments of resistance against impulses, distractions, or habits.
 
 ## Features
 
@@ -30,8 +30,8 @@ WITHHOLD is built on the principle that what we **don't** do is often as definin
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/withhold.git
-    cd withhold
+    git clone https://github.com/yourusername/omission.git
+    cd omission
     ```
 
 2.  **Install dependencies**:

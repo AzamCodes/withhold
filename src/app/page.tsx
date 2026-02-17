@@ -132,7 +132,7 @@ export default function Home() {
               textWrap: "balance" as any
             }}
           >
-            WITHHOLD
+            OMISSION
           </h1>
           <p
             className="text-base sm:text-lg text-[#666666]"

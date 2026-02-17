@@ -25,23 +25,24 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "WITHHOLD - Record what you didn't give into.",
+  title: "OMISSION - Record what you didn't give into.",
   description: "A minimalist tool for recording restraint. No accounts, no history.",
   openGraph: {
-    title: "WITHHOLD",
+    title: "OMISSION",
     description: "Record what you didn't give into.",
     type: "website",
     locale: "en_US",
-    siteName: "WITHHOLD",
+    siteName: "OMISSION",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WITHHOLD",
+    title: "OMISSION",
     description: "Record what you didn't give into.",
   },
-  applicationName: "WITHHOLD",
-  authors: [{ name: "WITHHOLD" }],
-  keywords: ["restraint", "minimalist", "record", "log", "withhold"],
+  applicationName: "OMISSION",
+  authors: [{ name: "OMISSION" }],
+  keywords: ["restraint", "minimalist", "record", "log", "omission"],
+  metadataBase: new URL("https://omission.vercel.app"),
 };
 
 export default function RootLayout({
@@ -58,11 +59,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              "name": "WITHHOLD",
+              "name": "OMISSION",
               "applicationCategory": "UtilityApplication",
               "operatingSystem": "Web",
               "description": "A minimalist tool for recording restraint.",
-              "url": "https://withhold.vercel.app", // Conceptual URL
+              "url": "https://omission.vercel.app", // Conceptual URL
               "offers": {
                 "@type": "Offer",
                 "price": "0",

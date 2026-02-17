@@ -111,7 +111,7 @@ export async function GET(req: NextRequest) {
                                     whiteSpace: "nowrap",
                                 }}
                             >
-                                WITHHOLD RECORD
+                                OMISSION RECORD
                             </p>
                             <p
                                 style={{
@@ -141,7 +141,7 @@ export async function GET(req: NextRequest) {
                                     whiteSpace: "nowrap",
                                 }}
                             >
-                                WITHHELD:
+                                OMITTED:
                             </p>
                             <p
                                 style={{

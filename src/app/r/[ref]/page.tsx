@@ -11,10 +11,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { ref } = await Promise.resolve(params); // params is async in latest Next.js? Just to be safe.
 
     return {
-        title: 'WITHHOLD — Record',
+        title: 'OMISSION — Record',
         description: 'Record what you didn’t give into.',
         openGraph: {
-            title: 'WITHHOLD — Record',
+            title: 'OMISSION — Record',
             description: 'Record what you didn’t give into.',
             images: [
                 {
@@ -62,7 +62,7 @@ export default async function RecordPage({ params }: Props) {
                                 fontSize: "clamp(3rem, 5vw + 1rem, 5rem)",
                             }}
                         >
-                            WITHHOLD
+                            OMISSION
                         </h1>
                     </Link>
                     <p
