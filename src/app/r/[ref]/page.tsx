@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import RecordCard from '../../../components/record-card';
+import RecordView from '@/components/record-view';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -39,7 +39,16 @@ export default async function RecordPage({ params }: Props) {
     }
 
     const dateStr = parts[1];
-    const base64Text = parts.slice(2).join('-');
+    let base64Text = parts.slice(2).join('-');
+
+    // Restore standard base64 from URL-safe variants
+    base64Text = base64Text.replace(/-/g, '+').replace(/_/g, '/');
+
+    // Pad with = if needed
+    while (base64Text.length % 4) {
+        base64Text += '=';
+    }
+
     let text = '';
     try {
         text = decodeURIComponent(atob(base64Text));
@@ -53,17 +62,10 @@ export default async function RecordPage({ params }: Props) {
         <main className="min-h-[100dvh] flex flex-col items-center justify-center p-6 sm:p-12 w-full overflow-x-hidden bg-[#FAFAFA]">
             <div className="w-full max-w-[720px] flex flex-col items-start gap-12 sm:gap-16">
                 {/* Header */}
-                <div className="w-full flex flex-col gap-2">
-                    <Link href="/" className="no-underline text-black">
-                        <h1
-                            className="font-bold tracking-[-0.02em] leading-none"
-                            style={{
-                                fontFamily: "var(--font-serif)",
-                                fontSize: "clamp(3rem, 5vw + 1rem, 5rem)",
-                            }}
-                        >
-                            OMISSION
-                        </h1>
+                <div className="w-full flex flex-col gap-8">
+                    <Link href="/" className="group no-underline text-black flex flex-col gap-8 items-start">
+                        <h1 className="sr-only">OMISSION</h1>
+                        <img src="/image.svg" alt="OMISSION" className="w-[180px] sm:w-[220px] group-hover:opacity-80 transition-opacity" />
                     </Link>
                     <p
                         className="text-base sm:text-lg text-[#666666]"
@@ -77,21 +79,7 @@ export default async function RecordPage({ params }: Props) {
                 </div>
 
                 {/* Card */}
-                <div className="w-full flex flex-col gap-8">
-                    <div className="w-full relative scale-[0.5] sm:scale-100 origin-top-left sm:origin-center" style={{ width: '720px', maxWidth: '100%', overflowX: 'auto', display: 'flex', justifyContent: 'center' }}>
-                        <div style={{ pointerEvents: 'none' }}>
-                            <RecordCard text={text} date={formattedDate} />
-                        </div>
-                    </div>
-
-                    {/* Controls */}
-                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-[-200px] sm:mt-4 pl-1">
-                        <Link href="/" className="group relative h-14 sm:h-auto flex items-center justify-center sm:justify-start text-[14px] uppercase tracking-[0.2em] cursor-pointer text-black hover:text-black/70 transition-colors" style={{ fontFamily: "var(--font-mono)" }}>
-                            Record your own
-                            <span className="hidden sm:block absolute left-0 bottom-[-4px] w-full h-[1px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ease-out"></span>
-                        </Link>
-                    </div>
-                </div>
+                <RecordView text={text} date={formattedDate} />
             </div>
         </main>
     );

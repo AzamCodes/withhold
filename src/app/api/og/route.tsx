@@ -29,12 +29,19 @@ export async function GET(req: NextRequest) {
         // Reformat date to YYYY-MM-DD for display
         const formattedDate = `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}`;
 
-        const base64Text = parts.slice(2).join('-'); // Rejoin in case text had dashes (though base64 usually doesn't, URL safe might)
+        let base64Text = parts.slice(2).join('-');
+
+        // Restore standard base64 from URL-safe variants
+        base64Text = base64Text.replace(/-/g, '+').replace(/_/g, '/');
+
+        // Pad with = if needed
+        while (base64Text.length % 4) {
+            base64Text += '=';
+        }
 
         let text = '';
         try {
             text = decodeURIComponent(atob(base64Text));
-            // text = Buffer.from(base64Text, 'base64').toString('utf-8'); // If node
         } catch (e) {
             return new Response('Invalid encoding', { status: 400 });
         }
